@@ -14,36 +14,39 @@ public class Possibilities {
 
         boolean change = false;
 
-        if (Integer.toBinaryString(data).charAt(val) == '0'){
+        if (!contains(val)){
 
-            this.data = data | (1 << val);
+            this.data = data | (1 << val-1);
 
-            return change = true;
+            change = true;
 
         }else {
 
-            return change = false;
+            change = false;
 
         }
+
+        return change;
 
     }
 
     public boolean remove (int val){
 
         boolean change = false;
-        String dataBinary = Integer.toBinaryString(data);
 
-        if (dataBinary.charAt(val) == '1'){
+        if (contains(val)){
 
             this.data = data & (~(1 << val-1));
 
-            return change = true;
+            change = true;
 
         }else {
 
-            return change = false;
+            change = false;
 
         }
+
+        return change;
 
     }
 
@@ -51,15 +54,17 @@ public class Possibilities {
 
         boolean contient = false;
 
-        if (data >> val == 0){
+        if (data >> val-1 == 0){
 
-            return contient = false;
+            contient = false;
 
         }else {
 
-            return contient = true;
+            contient = true;
 
         }
+
+        return contient;
 
     }
 
